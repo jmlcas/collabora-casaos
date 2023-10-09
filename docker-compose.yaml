@@ -1,3 +1,10 @@
+# Collabora - CasaOS
+
+# Icono para Collabora
+https://www.collaboraoffice.com/wp-content/uploads/2022/02/collabora-online-sqr.svg
+
+----------------------------------------------
+
 version: '3.3'
 
 services:
