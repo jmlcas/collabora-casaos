@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+
+    collabora:
+        image: collabora/code
+        container_name: collabora
+        ports:
+            - "9980:9980"
+        restart: unless-stopped
+        environment:
+            - extra_params=--o:ssl.enable=false
+            - domain=localhost  # 192.168.1.xx | example.com            
+            - username=User
+            - password=p4ssw0rd
+            - dictionaries=es_ES 
+            - TZ=Europe/Madrid          
+
+            
