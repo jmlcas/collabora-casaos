@@ -1,26 +1,45 @@
-# Collabora - CasaOS
-
-# Icono para Collabora
-https://www.collaboraoffice.com/wp-content/uploads/2022/02/collabora-online-sqr.svg
-
-----------------------------------------------
-
-version: '3.3'
-
+name: collabora
 services:
-
-    collabora:
-        image: collabora/code
-        container_name: collabora
-        ports:
-            - "9980:9980"
-        restart: unless-stopped
-        environment:
-            - 'extra_params=--o:ssl.enable=false'
-            - domain=localhost  # 192.168.1.xx | example.com            
-            - username=User
-            - password=p4ssw0rd
-            - dictionaries=es_ES 
-            - TZ=Europe/Madrid          
+  collabora:
+    image: collabora/code    
+    container_name: collabora
+    environment:
+      - TZ=Europe/Madrid
+      - dictionaries=es_ES
+      - domain=localhost   # 192.168.1.xx | example.com   
+      - extra_params=--o:ssl.enable=false   # true
+      - password=p4ssw0rd
+      - username=User
+    labels:
+      icon: https://www.collaboraoffice.com/wp-content/uploads/2022/02/collabora-online-sqr.svg
+    ports:
+      - target: 9980
+        published: "9980"
+        protocol: tcp
+    restart: unless-stopped
+    networks:
+      - collabora
+    privileged: false
+networks:
+  collabora:
+    name: collabora
+x-casaos:
+  author: Labarta
+  category: Utilities
+  hostname: ""
+  icon: https://www.collaboraoffice.com/wp-content/uploads/2022/02/collabora-online-sqr.svg
+  index: /
+  port_map: "9980"
+  scheme: http
+  store_app_id: collabora
+  title:
+    custom: Collabora
+  description:
+    en_us: Collabora for CasaOS.
+  tagline:
+    en_us: Provides additional features to CasaOS.
+  architectures:
+    - amd64
+    - arm64          
 
             
